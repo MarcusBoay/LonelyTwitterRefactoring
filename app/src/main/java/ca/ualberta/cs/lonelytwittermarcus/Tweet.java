@@ -36,7 +36,7 @@ public abstract class Tweet implements Serializable {
         tweetBody = (String) in.readObject();
     }
 
-    public abstract boolean isValid();
+    public abstract boolean isTweetValid();
 
     @Override
     public String toString() {

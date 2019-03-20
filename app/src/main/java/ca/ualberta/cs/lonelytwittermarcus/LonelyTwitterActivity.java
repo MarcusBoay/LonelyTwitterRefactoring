@@ -13,6 +13,7 @@ import android.widget.Toast;
 
 public class LonelyTwitterActivity extends Activity {
 
+	public static final String INVALID_TWEET = "Invalid tweet";
 	private EditText bodyText;
 	private ListView oldTweetsList;
 
@@ -49,14 +50,14 @@ public class LonelyTwitterActivity extends Activity {
 
 		//TODO: use different sub-classes (Normal or Important) based on usage of "*" in the text.
 		
-		if (tweet.isValid()) {
+		if (tweet.isTweetValid()) {
 			tweets.add(tweet);
 			adapter.notifyDataSetChanged();
 
 			bodyText.setText("");
 			tweetsProvider.saveTweets(tweets);
 		} else {
-			Toast.makeText(this, "Invalid tweet", Toast.LENGTH_SHORT).show();
+			Toast.makeText(this, INVALID_TWEET, Toast.LENGTH_SHORT).show();
 		}
 	}
 

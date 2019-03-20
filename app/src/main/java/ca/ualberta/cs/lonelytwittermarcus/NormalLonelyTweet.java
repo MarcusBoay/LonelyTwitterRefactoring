@@ -13,7 +13,7 @@ public class NormalLonelyTweet extends Tweet {
 	}
 
 	@Override
-	public boolean isValid() {
+	public boolean isTweetValid() {
 		if (tweetBody.trim().length() == 0
 				|| tweetBody.trim().length() > 10) {
 			return false;
