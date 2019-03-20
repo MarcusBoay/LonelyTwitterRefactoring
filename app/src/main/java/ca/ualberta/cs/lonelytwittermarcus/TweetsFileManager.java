@@ -14,6 +14,9 @@ import android.util.Log;
 
 public class TweetsFileManager {
 
+	public static final String FILE_SAV = "file.sav";
+	public static final String LONELY_TWITTER = "LonelyTwitter";
+	public static final String ERROR_CASTING = "Error casting";
 	private Context ctx;
 
 	public TweetsFileManager(Context ctx) {
@@ -25,7 +28,7 @@ public class TweetsFileManager {
 		List<NormalLonelyTweet> tweets = new ArrayList<NormalLonelyTweet>();
 
 		try {
-			FileInputStream fis = ctx.openFileInput("file.sav");
+			FileInputStream fis = ctx.openFileInput(FILE_SAV);
 			ObjectInputStream ois = new ObjectInputStream(fis);
 
 			Object o = ois.readObject();
@@ -33,7 +36,7 @@ public class TweetsFileManager {
 			if (o instanceof ArrayList) {
 				tweets = (ArrayList<NormalLonelyTweet>) o;
 			} else {
-				Log.i("LonelyTwitter", "Error casting");
+				Log.i(LONELY_TWITTER, ERROR_CASTING);
 			}
 
 		} catch (FileNotFoundException e) {
@@ -49,7 +52,7 @@ public class TweetsFileManager {
 
 	public void saveTweets(List<NormalLonelyTweet> tweets) {
 		try {
-			FileOutputStream fos = ctx.openFileOutput("file.sav", 0);
+			FileOutputStream fos = ctx.openFileOutput(FILE_SAV, 0);
 			ObjectOutputStream oos = new ObjectOutputStream(fos);
 
 			oos.writeObject(tweets);
