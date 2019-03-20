@@ -36,14 +36,7 @@ public abstract class Tweet implements Serializable {
         tweetBody = (String) in.readObject();
     }
 
-    public boolean isValid() {
-        if (tweetBody.trim().length() == 0
-                || tweetBody.trim().length() > 10) {
-            return false;
-        }
-
-        return true;
-    }
+    public abstract boolean isValid();
 
     @Override
     public String toString() {
